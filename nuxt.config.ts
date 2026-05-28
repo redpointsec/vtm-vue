@@ -2,7 +2,10 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss'],
   devtools: { enabled: false },
   nitro: {
-    experimental: { wasm: false }
+    experimental: { wasm: false },
+    externals: {
+      external: ['better-sqlite3']
+    }
   },
   runtimeConfig: {
     vtmAuthSecret: process.env.VTM_VUE_AUTH_SECRET || 'vtm-vue-default-training-secret',

@@ -15,6 +15,39 @@ npm run seed       # creates and seeds the SQLite database
 npm run dev        # starts the dev server at http://localhost:3000
 ```
 
+## Docker
+
+Build and run locally:
+
+```bash
+docker build --platform linux/amd64 -t vtm-vue .
+docker run -p 3000:3000 \
+  -e OPENROUTER_API_KEY=your_key_here \
+  vtm-vue
+```
+
+The database is seeded at build time — every container starts fresh with the default accounts.
+
+## Deploy to AWS ECS
+
+Prerequisites: AWS CLI configured, Docker running, ECS cluster and service already created.
+
+```bash
+export AWS_REGION=us-east-1
+export ECS_CLUSTER=your-cluster-name
+export ECS_SERVICE=your-service-name
+
+./deploy.sh
+```
+
+The script will:
+1. Create an ECR repository called `vtm-vue` if it doesn't exist
+2. Build the image for `linux/amd64`
+3. Push to ECR
+4. Force a redeployment of your ECS service
+
+If your ECS tasks run on ARM (Graviton), edit the `--platform` flag in `deploy.sh` to `linux/arm64`.
+
 ## Default Accounts
 
 | Username | Password  | Role  |
