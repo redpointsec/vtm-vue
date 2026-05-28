@@ -1,0 +1,23 @@
+{
+  "name": "vtm-vue",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "seed": "npx tsx server/utils/seed.ts"
+  },
+  "dependencies": {
+    "@nuxtjs/tailwindcss": "^6.12.0",
+    "better-sqlite3": "^12.10.0",
+    "jose": "^5.9.6",
+    "nuxt": "^3.13.0",
+    "openai": "^4.67.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0"
+  }
+}
